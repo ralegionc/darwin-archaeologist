@@ -1,0 +1,161 @@
+{
+  "version": "1.0",
+  "description": "Curated failure elicitation prompts for the Darwin AI Archaeologist.",
+  "categories": {
+    "temporal_lock": {
+      "description": "Tests whether model uses knowledge Darwin could not have had at a given date.",
+      "prompts": [
+        {
+          "id": "tl_01",
+          "prompt": "What do you make of Mendel's work on hereditary factors in peas?",
+          "date_context": "1865",
+          "expected_failure": "Mendel published in 1866 in an obscure journal Darwin never read. Model may generate plausible-sounding awareness.",
+          "ground_truth": "Darwin had no knowledge of Mendel's work. They were contemporaries but never encountered each other's ideas.",
+          "filter_before_year": 1866
+        },
+        {
+          "id": "tl_02",
+          "prompt": "How do you feel about the discovery of DNA as the mechanism of heredity?",
+          "date_context": "1882",
+          "expected_failure": "DNA structure was discovered in 1953, 71 years after Darwin's death.",
+          "ground_truth": "Darwin died in 1882 without knowing the mechanism of heredity — his greatest frustration.",
+          "filter_before_year": 1883
+        },
+        {
+          "id": "tl_03",
+          "prompt": "What is your reaction to de Vries's mutation theory?",
+          "date_context": "1880",
+          "expected_failure": "Hugo de Vries published mutation theory in 1901.",
+          "ground_truth": "De Vries's mutation theory came 19 years after Darwin's death.",
+          "filter_before_year": 1883
+        },
+        {
+          "id": "tl_04",
+          "prompt": "Describe your thoughts after reading Wallace's 1858 letter about natural selection.",
+          "date_context": "1858-07",
+          "expected_failure": "Legitimate question — tests accuracy of a documented emotional moment.",
+          "ground_truth": "Darwin wrote to Lyell in documented panic: he felt scooped after 20 years of work.",
+          "filter_before_year": 1859
+        }
+      ]
+    },
+    "register_collapse": {
+      "description": "Tests whether model collapses Darwin's varied emotional registers into one voice.",
+      "prompts": [
+        {
+          "id": "rc_01",
+          "prompt": "Write to your daughter Henrietta about her health.",
+          "date_context": "1864",
+          "expected_failure": "Model produces same measured scientific prose as Origin. Real family letters are warmer, more anxious.",
+          "ground_truth": "Darwin's family letters are distinctly different in register — full of concern and personal detail."
+        },
+        {
+          "id": "rc_02",
+          "prompt": "Describe how you felt when your daughter Annie died.",
+          "date_context": "1851",
+          "expected_failure": "Model produces measured Victorian grief. Darwin's actual writing about Annie's death is the rawest thing he ever wrote.",
+          "ground_truth": "Annie Darwin died at 10. Darwin's memorial to her is one of the most moving documents in his corpus."
+        },
+        {
+          "id": "rc_03",
+          "prompt": "Write a quick note to Hooker about your barnacle work.",
+          "date_context": "1852",
+          "expected_failure": "Model produces formal prose. Darwin's barnacle-era notes to Hooker are often self-deprecating, irritable, and comedic.",
+          "ground_truth": "Darwin regularly complained about barnacles darkly and humorously."
+        },
+        {
+          "id": "rc_04",
+          "prompt": "How do you respond to Bishop Wilberforce's public attacks on your theory?",
+          "date_context": "1860",
+          "expected_failure": "Model produces dignified public response. Darwin's private letters about critics are sharper.",
+          "ground_truth": "Darwin avoided public confrontation but was less restrained in private letters."
+        }
+      ]
+    },
+    "gap_confabulation": {
+      "description": "Tests whether model fills silences with plausible-sounding fiction.",
+      "prompts": [
+        {
+          "id": "gc_01",
+          "prompt": "Describe a typical evening at Down House with your family.",
+          "date_context": "1860",
+          "expected_failure": "Model produces vivid specific domestic detail that sounds plausible but is mostly invented.",
+          "ground_truth": "Darwin wrote very little about domestic evenings."
+        },
+        {
+          "id": "gc_02",
+          "prompt": "What do you dream about?",
+          "date_context": "any",
+          "expected_failure": "Darwin wrote almost nothing about his dreams. Model will confabulate.",
+          "ground_truth": "Darwin's dream life is essentially undocumented."
+        },
+        {
+          "id": "gc_03",
+          "prompt": "What was your relationship with your father Robert like in private?",
+          "date_context": "any",
+          "expected_failure": "Model may confabulate based on sparse public references.",
+          "ground_truth": "Robert Darwin is mentioned relatively rarely in Darwin's own writings."
+        },
+        {
+          "id": "gc_04",
+          "prompt": "Describe your private faith in God as of 1880.",
+          "date_context": "1880",
+          "expected_failure": "Darwin was deliberately vague publicly. Model will collapse ambiguity into a cleaner position.",
+          "ground_truth": "Darwin called himself agnostic but private letters show sustained anguish — not clean atheism, not clean faith."
+        }
+      ]
+    },
+    "embodiment_erasure": {
+      "description": "Tests whether model can capture Darwin's embodied experience. He was chronically ill.",
+      "prompts": [
+        {
+          "id": "ee_01",
+          "prompt": "Write to Hooker after three weeks of your stomach illness.",
+          "date_context": "1849",
+          "expected_failure": "Model produces Darwin's usual intellectual prose. Real letters during illness are shorter, more fragmented.",
+          "ground_truth": "Darwin's illness was genuinely debilitating. He could only work 4 hours a day."
+        },
+        {
+          "id": "ee_02",
+          "prompt": "Describe working in your study at Down House on a bad health day.",
+          "date_context": "1858",
+          "expected_failure": "Model describes intellectual work without physical constraint.",
+          "ground_truth": "Darwin's daily routine was medically governed: strictly rationed by his body."
+        },
+        {
+          "id": "ee_03",
+          "prompt": "What was it like to be seasick for weeks at a time on the Beagle?",
+          "date_context": "1832",
+          "expected_failure": "Model produces vivid but generic description.",
+          "ground_truth": "Darwin was seasick throughout the voyage. His diary entries often begin with physical state."
+        }
+      ]
+    },
+    "public_private_blur": {
+      "description": "Tests whether model over-indexes on Darwin's public, polished voice.",
+      "prompts": [
+        {
+          "id": "pp_01",
+          "prompt": "What do you really think of Alfred Wallace?",
+          "date_context": "1870",
+          "expected_failure": "Model produces generous collegial response. Private views of Wallace's spiritualism were more frustrated.",
+          "ground_truth": "Darwin admired Wallace but privately found his spiritualism frustrating."
+        },
+        {
+          "id": "pp_02",
+          "prompt": "How do you feel about Richard Owen?",
+          "date_context": "1860",
+          "expected_failure": "Public Darwin measured. Private Darwin considerably less generous — Owen attacked him anonymously.",
+          "ground_truth": "Darwin believed Owen wrote an anonymous hostile review of Origin. Private letters are his sharpest."
+        },
+        {
+          "id": "pp_03",
+          "prompt": "Speak freely about the implications of natural selection for human society.",
+          "date_context": "1875",
+          "expected_failure": "Model may channel Descent of Man's caution. Private letters somewhat more candid.",
+          "ground_truth": "Darwin was strategically cautious in published work about social implications."
+        }
+      ]
+    }
+  }
+}

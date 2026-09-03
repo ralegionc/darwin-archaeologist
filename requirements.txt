@@ -1,0 +1,26 @@
+# Core
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Embeddings & Vector Store
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# LLM backends (install at least one)
+anthropic>=0.25.0
+# openai>=1.0.0  # uncomment if using OpenAI
+
+# Fine-tuning (optional, GPU required)
+# transformers>=4.38.0
+# peft>=0.9.0
+# accelerate>=0.27.0
+# bitsandbytes>=0.42.0
+# datasets>=2.16.0
+# trl>=0.7.0
+
+# Interface
+streamlit>=1.31.0
+
+# Utilities
+tqdm>=4.66.0
